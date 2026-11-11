@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Growth AI | Scale Your Business with AI & Performance Marketing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #090d16;
+      --card-bg: rgba(22, 29, 47, 0.7);
+      --primary: #00f2fe;
+      --secondary: #4facfe;
+      --accent: #7f00ff;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border: rgba(255, 255, 255, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Glow Background Accents */
+    .glow-1 {
+      position: absolute;
+      top: -10%;
+      left: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(0, 242, 254, 0.15) 0%, rgba(0,0,0,0) 70%);
+      z-index: -1;
+    }
+
+    .glow-2 {
+      position: absolute;
+      top: 40%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(127, 0, 255, 0.15) 0%, rgba(0,0,0,0) 70%);
+      z-index: -1;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 8%;
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(9, 13, 22, 0.8);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 2rem;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 6rem 8% 4rem;
+      text-align: center;
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.5rem 1.2rem;
+      border-radius: 50px;
+      background: rgba(0, 242, 254, 0.1);
+      border: 1px solid rgba(0, 242, 254, 0.3);
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--primary), #e0c3fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      padding: 1rem 2.2rem;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #000;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0, 242, 254, 0.3);
+    }
+
+    .btn-secondary {
+      padding: 1rem 2.2rem;
+      border-radius: 12px;
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    /* Services Section */
+    .services {
+      padding: 5rem 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 2.5rem 2rem;
+      border-radius: 20px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .card:hover {
+      border-color: rgba(0, 242, 254, 0.4);
+      transform: translateY(-5px);
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1.2rem;
+      display: inline-block;
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Calculator Section */
+    .calculator-section {
+      background: rgba(16, 23, 42, 0.6);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 3rem 8%;
+      margin: 4rem 8%;
+    }
+
+    .calc-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .calc-inputs {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .calc-output {
+      flex: 1;
+      min-width: 280px;
+      background: rgba(0, 242, 254, 0.05);
+      border: 1px solid rgba(0, 242, 254, 0.2);
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .slider-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .slider-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .slider-group input {
+      width: 100%;
+      accent-color: var(--primary);
+    }
+
+    .calc-val {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 1rem 0;
+    }
+
+    /* Pricing Section */
+    .pricing {
+      padding: 4rem 8%;
+    }
+
+    .price-card {
+      position: relative;
+    }
+
+    .price-card.featured {
+      border-color: var(--primary);
+      background: linear-gradient(180deg, rgba(0, 242, 254, 0.05) 0%, rgba(22, 29, 47, 0.7) 100%);
+    }
+
+    .price-tag {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin: 1rem 0;
+    }
+
+    .price-tag span {
+      font-size: 1rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .features-list {
+      list-style: none;
+      margin: 1.5rem 0 2rem;
+    }
+
+    .features-list li {
+      margin-bottom: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .features-list li::before {
+      content: "✓";
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    /* Contact Section */
+    .contact {
+      padding: 5rem 8%;
+      text-align: center;
+    }
+
+    .contact-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 3.5rem 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.4rem; }
+      nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow-1"></div>
+  <div class="glow-2"></div>
+
+  <!-- Navbar -->
+  <header>
+    <div class="logo">Digital Growth AI</div>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#calculator">ROI Estimator</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <span class="badge">🚀 AI-Powered Growth Agency</span>
+    <h1>Automate, Scale & Dominate Your <span>Digital Presence</span></h1>
+    <p>We blend high-converting Meta Ads, viral Video Reels, custom AI Chatbots, and sleek Web Design to multiply your business revenue.</p>
+    <div class="btn-group">
+      <a href="#contact" class="btn-primary">Get Free Audit</a>
+      <a href="#services" class="btn-secondary">Explore Services</a>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="services" id="services">
+    <div class="section-title">
+      <h2>High-Impact Solutions</h2>
+      <p>Tailored strategies engineered to scale your client pipeline</p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <span class="card-icon">🎯</span>
+        <h3>Meta Ads & Lead Gen</h3>
+        <p>Data-driven ad campaigns designed for maximum ROI and lowest cost-per-lead.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🎬</span>
+        <h3>Viral Reels & Video Content</h3>
+        <p>Short-form video editing that hooks attention and boosts social engagement.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🤖</span>
+        <h3>AI Automations & WhatsApp Bots</h3>
+        <p>Convert leads 24/7 automatically with instant AI chat & response workflows.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">💻</span>
+        <h3>Custom Web Development</h3>
+        <p>Fast, responsive, high-converting websites optimized for sales & mobile views.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive ROI Calculator -->
+  <section class="calculator-section" id="calculator">
+    <div class="calc-container">
+      <div class="calc-inputs">
+        <h2>Estimate Your Revenue Growth</h2>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">See how much potential monthly revenue AI marketing can generate for your business.</p>
+        
+        <div class="slider-group">
+          <label>Monthly Ad Spend (₹): <span id="spendVal">10,000</span></label>
+          <input type="range" id="spend" min="5000" max="100000" step="5000" value="10000" oninput="calculate()">
+        </div>
+
+        <div class="slider-group">
+          <label>Average Client Value (₹): <span id="ticketVal">15,000</span></label>
+          <input type="range" id="ticket" min="2000" max="100000" step="1000" value="15000" oninput="calculate()">
+        </div>
+      </div>
+
+      <div class="calc-output">
+        <h3>Projected Monthly Revenue</h3>
+        <div class="calc-val" id="roiResult">₹90,000</div>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Estimated 3x to 6x Return on Ad Spend (ROAS) based on Digital Growth AI strategies.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Plans -->
+  <section class="pricing" id="pricing">
+    <div class="section-title">
+      <h2>Scalable Growth Packages</h2>
+      <p>Transparent pricing tailored to your business stage</p>
+    </div>
+    <div class="grid">
+      <div class="card price-card">
+        <h3>Starter Scale</h3>
+        <p>Perfect for local businesses starting out.</p>
+        <div class="price-tag">₹14,999 <span>/month</span></div>
+        <ul class="features-list">
+          <li>Social Media Management</li>
+          <li>8 High-Quality Reels / Month</li>
+          <li>Basic Meta Lead Ads Run</li>
+          <li>Monthly Performance Report</li>
+        </ul>
+        <a href="#contact" class="btn-secondary" style="display: block; text-align: center;">Select Starter</a>
+      </div>
+
+      <div class="card price-card featured">
+        <span class="badge" style="position: absolute; top: 15px; right: 15px;">Popular</span>
+        <h3>Pro AI Growth</h3>
+        <p>Complete lead-gen engine for scaling brands.</p>
+        <div class="price-tag">₹29,999 <span>/month</span></div>
+        <ul class="features-list">
+          <li>Full Meta & Google Ads Setup</li>
+          <li>15 Viral Reels + Scriptwriting</li>
+          <li>WhatsApp AI Chatbot Integration</li>
+          <li>High-Converting Landing Page</li>
+          <li>24/7 Priority Support</li>
+        </ul>
+        <a href="#contact" class="btn-primary" style="display: block; text-align: center;">Get Pro Growth</a>
+      </div>
+
+      <div class="card price-card">
+        <h3>Custom Enterprise</h3>
+        <p>Full-stack automation & digital transformation.</p>
+        <div class="price-tag">Custom <span>Pricing</span></div>
+        <ul class="features-list">
+          <li>Custom Web Application</li>
+          <li>Full Automation Infrastructure</li>
+          <li>Unlimited Content Production</li>
+          <li>Dedicated Growth Manager</li>
+        </ul>
+        <a href="#contact" class="btn-secondary" style="display: block; text-align: center;">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section class="contact" id="contact">
+    <div class="contact-box">
+      <h2>Ready to Scale Your Revenue?</h2>
+      <p style="color: var(--text-muted); margin: 1rem 0 2rem;">Book a free strategy session with Digital Growth AI and let's craft your custom automation growth plan.</p>
+      
+      <!-- Direct WhatsApp Action Link -->
+      <a href="https://wa.me/919876543210?text=Hello%20Digital%20Growth%20AI,%20I%20want%20to%20scale%20my%20business%20marketing!" class="btn-primary" target="_blank">Chat Directly on WhatsApp 💬</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Digital Growth AI. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    function calculate() {
+      const spend = parseInt(document.getElementById('spend').value);
+      const ticket = parseInt(document.getElementById('ticket').value);
+
+      document.getElementById('spendVal').innerText = spend.toLocaleString('en-IN');
+      document.getElementById('ticketVal').innerText = ticket.toLocaleString('en-IN');
+
+      // Estimated return algorithm: spend * multiplier + ticket offset
+      const estimatedLeads = Math.floor((spend / 250) * 0.15); // Avg conversion
+      const projectedRevenue = Math.max(spend * 3, estimatedLeads * ticket);
+
+      document.getElementById('roiResult').innerText = '₹' + projectedRevenue.toLocaleString('en-IN');
+    }
+    calculate();
+  </script>
+</body>
+</html>
